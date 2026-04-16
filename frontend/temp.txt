@@ -1,0 +1,23 @@
+    function runSandbox() {
+      const html = document.getElementById('sandHtml').value;
+      const css = document.getElementById('sandCss').value;
+      const js = document.getElementById('sandJs').value;
+      const frame = document.getElementById('sandFrame');
+      frame.srcdoc = `<!DOCTYPE html><html><head><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`;
+    }
+
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'width:1100px; height:850px; padding:60px; background:#f5f6f8; color:#1a1929; font-family:"Space Grotesk",sans-serif; text-align:center; border:25px solid #6c63ff; position:absolute; left:-9999px;';
+      wrapper.innerHTML = `
+         <h1 style="font-size:4.5rem; margin-top:3rem; font-family:'Syne',sans-serif; color:#1a1a24;">Certificate of Completion</h1>
+         <p style="font-size:1.8rem; margin-top:3rem; color:#5c607a;">This respectfully acknowledges that</p>
+         <h2 style="font-size:3.5rem; margin-top:1.5rem; color:#6c63ff; font-family:'Syne',sans-serif; border-bottom:3px solid #6c63ff; padding-bottom:10px; display:inline-block;">${currentUser.name || 'Student'}</h2>
+         <p style="font-size:1.4rem; margin-top:2rem; color:#5c607a; padding:0 3rem;">has successfully mastered all designated artificial intelligence modules, quizzes, and learning objectives in the</p>
+         <h3 style="font-size:2.8rem; margin-top:2rem; color:#1a1a24; font-family:'Syne',sans-serif;">Learn AI Personalized Curriculum</h3>
+         <div style="margin-top:6rem; display:flex; justify-content:space-between; padding:0 5rem; align-items:flex-end;">
+           <div><div style="border-bottom:3px solid #1a1a24; width:200px; margin:0 auto;"></div><p style="margin-top:1rem; font-size:1.2rem; font-weight:bold;">Date: ${new Date().toLocaleDateString()}</p></div>
+           <div style="font-family:'Syne',sans-serif; font-size:4rem; font-weight:800; color:#43d9ad;">🏅 100%</div>
+         </div>
+       `;
+      document.body.appendChild(wrapper);
+      html2pdf().set({

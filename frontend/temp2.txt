@@ -1,0 +1,34 @@
+    }
+
+    // THEME LOGIC
+    function toggleTheme() {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggleBtn');
+      if (root.classList.contains('light-mode')) {
+        root.classList.remove('light-mode');
+        if (btn) btn.textContent = '☀️ Light Mode';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        root.classList.add('light-mode');
+        if (btn) btn.textContent = '🌙 Dark Mode';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // INIT
+    window.onload = async () => {
+      if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.classList.add('light-mode');
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) btn.textContent = '🌙 Dark Mode';
+      }
+      if (TOKEN) {
+        try {
+          currentUser = await api('GET', '/auth/me');
+          showApp();
+        } catch { doLogout(); }
+      }
+    };
+
+    // CERTIFICATE LOGIC
+    function downloadCertificate() {

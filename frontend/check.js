@@ -1,0 +1,10 @@
+const fs = require('fs');
+const h = fs.readFileSync('index.html', 'utf8');
+console.log('Has api():', h.includes('async function api('));
+console.log('Has doLogin():', h.includes('async function doLogin('));
+console.log('Has switchTab():', h.includes('function switchTab('));
+console.log('Has showErr():', h.includes('function showErr('));
+console.log('Has doRegister():', h.includes('async function doRegister('));
+console.log('loginBtn onclick:', h.includes('onclick="doLogin()"'));
+console.log('regBtn onclick:', h.includes('onclick="doRegister()"'));
+console.log('switchTab calls:', (h.match(/onclick="switchTab/g)||[]).length);
